@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Besparen360 | Slim besparen begint hier</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #18312d;
+      background: #f4f8f6;
+    }
+    header {
+      background: #103d35;
+      color: white;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo { font-size: 25px; font-weight: bold; }
+    .logo span { color: #72e0ad; }
+    nav a { color: white; text-decoration: none; margin-left: 18px; }
+    .hero {
+      background: linear-gradient(130deg, #103d35, #176b54);
+      color: white;
+      padding: 75px 7%;
+      text-align: center;
+    }
+    .hero h1 { font-size: clamp(34px, 6vw, 55px); margin: 0 0 18px; }
+    .hero p { font-size: 18px; line-height: 1.6; }
+    .button {
+      display: inline-block;
+      background: #72e0ad;
+      color: #103d35;
+      padding: 15px 25px;
+      border-radius: 9px;
+      font-weight: bold;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    section { padding: 50px 7%; }
+    h2 { text-align: center; font-size: 30px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 18px;
+      max-width: 1000px;
+      margin: 30px auto;
+    }
+    .card, .calculator {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px #18312d12;
+    }
+    .card { text-align: center; }
+    .card .emoji { font-size: 35px; }
+    .calculator { max-width: 550px; margin: 25px auto; }
+    label { display: block; font-weight: bold; margin: 17px 0 7px; }
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd8d2;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .calculator .button { width: 100%; margin-top: 22px; }
+    #result {
+      display: none;
+      margin-top: 22px;
+      padding: 18px;
+      background: #e6f8ee;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #result strong { font-size: 27px; color: #126343; }
+    .note { font-size: 13px; color: #64736d; line-height: 1.5; }
+    footer {
+      background: #103d35;
+      color: white;
+      text-align: center;
+      padding: 28px;
+    }
+    @media(max-width: 600px) {
+      nav a { margin: 0 10px 0 0; }
+      .hero { padding: 55px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Besparen<span>360</span></div>
+  <nav>
+    <a href="#diensten">Onze diensten</a>
+    <a href="#bespaarcheck">Bespaarcheck</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Haal meer uit je geld.</h1>
+  <p>Ontdek waar je mogelijk kunt besparen op je vaste lasten.<br>
+  Voor particulieren én ondernemers.</p>
+  <a class="button" href="#bespaarcheck">Start mijn gratis bespaarcheck</a>
+</div>
+
+<section id="diensten">
+  <h2>Waar wil jij op besparen?</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">⚡</div>
+      <h3>Energie</h3>
+      <p>Bekijk of je kunt besparen op gas en elektriciteit.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🛡️</div>
+      <h3>Verzekeringen</h3>
+      <p>Controleer of je verzekeringskosten voordeliger kunnen.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🌐</div>
+      <h3>Internet & telefonie</h3>
+      <p>Bekijk mogelijkheden voor lagere maandlasten.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🏢</div>
+      <h3>Zakelijke kosten</h3>
+      <p>Ook ondernemers helpen we hun vaste lasten te bekijken.</p>
+    </div>
+  </div>
+</section>
+
+<section id="bespaarcheck">
+  <h2>Bereken jouw mogelijke besparing</h2>
+  <p style="text-align:center">Vul je huidige kosten en een alternatief bedrag in.</p>
+
+  <div class="calculator">
+    <label for="category">Waarop wil je besparen?</label>
+    <select id="category">
+      <option>Energie</option>
+      <option>Verzekeringen</option>
+      <option>Internet en telefonie</option>
+      <option>Zakelijke kosten</option>
+      <option>Anders</option>
+    </select>
+
+    <label for="current">Huidige kosten per maand (€)</label>
+    <input id="current" type="number" min="0" step="0.01" placeholder="Bijvoorbeeld 150">
+
+    <label for="alternative">Alternatieve kosten per maand (€)</label>
+    <input id="alternative" type="number" min="0" step="0.01" placeholder="Bijvoorbeeld 120">
+
+    <button class="button" onclick="calculate()">Bereken mijn besparing</button>
+
+    <div id="result" aria-live="polite"></div>
+    <p class="note">Dit is een indicatieve berekening op basis van jouw invoer. Het is geen gegarandeerde besparing of offerte.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Besparen<span>360</span></div>
+  <p>Slim besparen begint hier.</p>
+  <p>© 2026 Besparen360</p>
+</footer>
+
+<script>
+function calculate() {
+  const current = Number(document.getElementById("current").value);
+  const alternative = Number(document.getElementById("alternative").value);
+  const result = document.getElementById("result");
+
+  if (!Number.isFinite(current) || !Number.isFinite(alternative) ||
+      current <= 0 || alternative < 0) {
+    result.style.display = "block";
+    result.textContent = "Vul een geldig bedrag in. De huidige kosten moeten hoger zijn dan €0.";
+    return;
+  }
+
+  const monthly = current - alternative;
+  const yearly = monthly * 12;
+  result.style.display = "block";
+
+  if (monthly > 0) {
+    result.innerHTML = "Mogelijke besparing per maand:<br><strong>€" +
+      monthly.toFixed(2) + "</strong><br>Mogelijke besparing per jaar: €" +
+      yearly.toFixed(2);
+  } else if (monthly === 0) {
+    result.textContent = "Er is geen verschil tussen de twee bedragen.";
+  } else {
+    result.textContent = "Het alternatief is €" +
+      Math.abs(monthly).toFixed(2) +
+      " per maand duurder.";
+  }
+}
+</script>
+
+</body>
+</html>
