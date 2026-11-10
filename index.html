@@ -2,148 +2,348 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Besparen360 | Slim besparen begint hier</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #18312d;
-      background: #f4f8f6;
-    }
-    header {
-      background: #103d35;
-      color: white;
-      padding: 22px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .logo { font-size: 25px; font-weight: bold; }
-    .logo span { color: #72e0ad; }
-    nav a { color: white; text-decoration: none; margin-left: 18px; }
-    .hero {
-      background: linear-gradient(130deg, #103d35, #176b54);
-      color: white;
-      padding: 75px 7%;
-      text-align: center;
-    }
-    .hero h1 { font-size: clamp(34px, 6vw, 55px); margin: 0 0 18px; }
-    .hero p { font-size: 18px; line-height: 1.6; }
-    .button {
-      display: inline-block;
-      background: #72e0ad;
-      color: #103d35;
-      padding: 15px 25px;
-      border-radius: 9px;
-      font-weight: bold;
-      text-decoration: none;
-      border: 0;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    section { padding: 50px 7%; }
-    h2 { text-align: center; font-size: 30px; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 18px;
-      max-width: 1000px;
-      margin: 30px auto;
-    }
-    .card, .calculator {
-      background: white;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 4px 18px #18312d12;
-    }
-    .card { text-align: center; }
-    .card .emoji { font-size: 35px; }
-    .calculator { max-width: 550px; margin: 25px auto; }
-    label { display: block; font-weight: bold; margin: 17px 0 7px; }
-    input, select {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #cbd8d2;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-    .calculator .button { width: 100%; margin-top: 22px; }
-    #result {
-      display: none;
-      margin-top: 22px;
-      padding: 18px;
-      background: #e6f8ee;
-      border-radius: 10px;
-      text-align: center;
-    }
-    #result strong { font-size: 27px; color: #126343; }
-    .note { font-size: 13px; color: #64736d; line-height: 1.5; }
-    footer {
-      background: #103d35;
-      color: white;
-      text-align: center;
-      padding: 28px;
-    }
-    @media(max-width: 600px) {
-      nav a { margin: 0 10px 0 0; }
-      .hero { padding: 55px 6%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Besparen360 helpt particulieren en ondernemers inzicht krijgen in hun vaste lasten en mogelijke besparingen.">
+<title>Besparen360 | Slim besparen begint hier</title>
+
+<style>
+:root {
+  --green: #123d32;
+  --green2: #1b604b;
+  --mint: #a8edc9;
+  --light: #f4f8f5;
+  --text: #18352c;
+  --muted: #64756d;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: var(--text);
+}
+header {
+  background: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 12px #123d3210;
+}
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--green);
+}
+.logo span { color: #26a46f; }
+nav { display: flex; gap: 24px; flex-wrap: wrap; }
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+nav a:hover { color: #21966a; }
+.button {
+  display: inline-block;
+  background: var(--mint);
+  color: var(--green);
+  padding: 15px 24px;
+  border: 0;
+  border-radius: 9px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+.button:hover { background: #8cddb5; }
+.button.dark {
+  background: var(--green);
+  color: white;
+}
+.hero {
+  background: linear-gradient(125deg, #103a30, #267456);
+  color: white;
+  padding: 90px 7%;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  align-items: center;
+  gap: 50px;
+}
+.eyebrow {
+  color: var(--mint);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.08;
+  margin: 18px 0;
+}
+.hero p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #e1f0e8;
+  max-width: 570px;
+}
+.hero-card {
+  background: white;
+  color: var(--text);
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px #071e1838;
+}
+.hero-card h3 { margin-top: 0; font-size: 21px; }
+.checkline {
+  padding: 12px 0;
+  border-bottom: 1px solid #e9efeb;
+  font-size: 15px;
+}
+.checkline:last-child { border: 0; }
+section { padding: 75px 7%; }
+.section-title {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 38px;
+}
+.section-title h2 {
+  font-size: clamp(28px, 4vw, 39px);
+  margin: 10px 0;
+}
+.section-title p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #e8eee9;
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px #123d3212;
+}
+.icon {
+  width: 52px;
+  height: 52px;
+  background: #e7f7ed;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+}
+.card h3 { margin-bottom: 9px; }
+.card p {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 14px;
+}
+.about {
+  background: white;
+  text-align: center;
+}
+.about-content {
+  max-width: 750px;
+  margin: auto;
+}
+.about-content p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+.calculator-section {
+  background: #eaf3ed;
+}
+.calculator {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 32px;
+  border-radius: 17px;
+  box-shadow: 0 10px 35px #123d3210;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin: 18px 0 8px;
+  font-size: 14px;
+}
+input, select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d4e0d8;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+}
+input:focus, select:focus {
+  outline: 2px solid #62bd91;
+}
+.calculator .button {
+  width: 100%;
+  margin-top: 22px;
+}
+#result {
+  display: none;
+  margin-top: 22px;
+  padding: 22px;
+  background: #e9f8ef;
+  border-radius: 10px;
+  line-height: 1.8;
+  text-align: center;
+}
+.result-number {
+  display: block;
+  color: #16734d;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 8px;
+}
+.small {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 18px;
+}
+.cta {
+  background: var(--green);
+  color: white;
+  text-align: center;
+}
+.cta h2 { font-size: 35px; }
+.cta p {
+  color: #d5e8de;
+  line-height: 1.7;
+}
+footer {
+  background: #0c2c25;
+  color: white;
+  padding: 38px 7%;
+  text-align: center;
+}
+footer p {
+  color: #c4d6cd;
+  font-size: 13px;
+  line-height: 1.7;
+}
+@media(max-width: 750px) {
+  .hero { grid-template-columns: 1fr; padding: 60px 7%; }
+  header { justify-content: center; }
+  nav { justify-content: center; }
+  section { padding: 55px 6%; }
+}
+</style>
 </head>
+
 <body>
 
 <header>
   <div class="logo">Besparen<span>360</span></div>
   <nav>
     <a href="#diensten">Onze diensten</a>
-    <a href="#bespaarcheck">Bespaarcheck</a>
+    <a href="#over">Over ons</a>
+    <a href="#check">Bespaarcheck</a>
   </nav>
+  <a class="button dark" href="#check">Start gratis</a>
 </header>
 
+<main>
 <div class="hero">
-  <h1>Haal meer uit je geld.</h1>
-  <p>Ontdek waar je mogelijk kunt besparen op je vaste lasten.<br>
-  Voor particulieren én ondernemers.</p>
-  <a class="button" href="#bespaarcheck">Start mijn gratis bespaarcheck</a>
+  <div>
+    <div class="eyebrow">Slimmer omgaan met je vaste lasten</div>
+    <h1>Meer grip op je kosten. Meer ruimte voor later.</h1>
+    <p>
+      Betaal je niet onnodig te veel? Met Besparen360
+      krijg je inzicht in je vaste lasten en ontdek je
+      waar mogelijk voordeel te behalen is.
+    </p>
+    <a class="button" href="#check">Start mijn gratis bespaarcheck →</a>
+  </div>
+
+  <div class="hero-card">
+    <h3>Waar kunnen we je bij helpen?</h3>
+    <div class="checkline">⚡ Energie en gas</div>
+    <div class="checkline">🛡️ Verzekeringen</div>
+    <div class="checkline">🌐 Internet en telefonie</div>
+    <div class="checkline">🏢 Zakelijke vaste lasten</div>
+    <div class="checkline">📊 Overzicht van je kosten</div>
+  </div>
 </div>
 
 <section id="diensten">
-  <h2>Waar wil jij op besparen?</h2>
+  <div class="section-title">
+    <div class="eyebrow" style="color:#21966a">Onze mogelijkheden</div>
+    <h2>Waar wil jij op besparen?</h2>
+    <p>Wij helpen je om je vaste lasten overzichtelijk te maken
+    en mogelijkheden voor lagere kosten te onderzoeken.</p>
+  </div>
+
   <div class="cards">
     <div class="card">
-      <div class="emoji">⚡</div>
+      <div class="icon">⚡</div>
       <h3>Energie</h3>
-      <p>Bekijk of je kunt besparen op gas en elektriciteit.</p>
+      <p>Bekijk je uitgaven voor gas en elektriciteit
+      en vergelijk mogelijke alternatieven.</p>
     </div>
     <div class="card">
-      <div class="emoji">🛡️</div>
+      <div class="icon">🛡️</div>
       <h3>Verzekeringen</h3>
-      <p>Controleer of je verzekeringskosten voordeliger kunnen.</p>
+      <p>Breng je verzekeringskosten in kaart
+      en onderzoek of er voordeligere opties zijn.</p>
     </div>
     <div class="card">
-      <div class="emoji">🌐</div>
+      <div class="icon">🌐</div>
       <h3>Internet & telefonie</h3>
-      <p>Bekijk mogelijkheden voor lagere maandlasten.</p>
+      <p>Controleer je abonnementen en bekijk
+      welke alternatieven beschikbaar zijn.</p>
     </div>
     <div class="card">
-      <div class="emoji">🏢</div>
-      <h3>Zakelijke kosten</h3>
-      <p>Ook ondernemers helpen we hun vaste lasten te bekijken.</p>
+      <div class="icon">🏢</div>
+      <h3>Ondernemers</h3>
+      <p>Krijg overzicht van zakelijke vaste lasten
+      en mogelijke besparingskansen.</p>
     </div>
   </div>
 </section>
 
-<section id="bespaarcheck">
-  <h2>Bereken jouw mogelijke besparing</h2>
-  <p style="text-align:center">Vul je huidige kosten en een alternatief bedrag in.</p>
+<section class="about" id="over">
+  <div class="about-content">
+    <div class="eyebrow" style="color:#21966a">Over Besparen360</div>
+    <h2>Besparen begint met inzicht.</h2>
+    <p>
+      Of je nu particulier bent of ondernemer:
+      vaste lasten kunnen ongemerkt oplopen.
+      Besparen360 wil je helpen om overzicht te krijgen,
+      mogelijkheden te ontdekken en bewuster keuzes te maken.
+    </p>
+    <p><strong>Helder. Overzichtelijk. Gericht op besparen.</strong></p>
+  </div>
+</section>
+
+<section class="calculator-section" id="check">
+  <div class="section-title">
+    <div class="eyebrow" style="color:#21966a">Gratis rekentool</div>
+    <h2>Doe jouw eerste bespaarcheck</h2>
+    <p>Vul twee maandbedragen in en bekijk het verschil.
+    Je gegevens worden in deze testversie niet verzonden.</p>
+  </div>
 
   <div class="calculator">
-    <label for="category">Waarop wil je besparen?</label>
+    <label for="category">Welke kosten wil je controleren?</label>
     <select id="category">
       <option>Energie</option>
       <option>Verzekeringen</option>
@@ -153,50 +353,73 @@
     </select>
 
     <label for="current">Huidige kosten per maand (€)</label>
-    <input id="current" type="number" min="0" step="0.01" placeholder="Bijvoorbeeld 150">
+    <input id="current" type="number" min="0" step="0.01"
+      placeholder="Bijvoorbeeld 150">
 
     <label for="alternative">Alternatieve kosten per maand (€)</label>
-    <input id="alternative" type="number" min="0" step="0.01" placeholder="Bijvoorbeeld 120">
+    <input id="alternative" type="number" min="0" step="0.01"
+      placeholder="Bijvoorbeeld 120">
 
-    <button class="button" onclick="calculate()">Bereken mijn besparing</button>
+    <button class="button dark" onclick="calculate()">
+      Bereken mijn mogelijke besparing
+    </button>
 
     <div id="result" aria-live="polite"></div>
-    <p class="note">Dit is een indicatieve berekening op basis van jouw invoer. Het is geen gegarandeerde besparing of offerte.</p>
+    <p class="small">
+      Let op: dit is een eenvoudige indicatieve berekening
+      op basis van je eigen invoer. Het resultaat is geen
+      offerte of gegarandeerde besparing. Controleer ook
+      eventuele overstapkosten, voorwaarden en verschillen
+      in dekking of dienstverlening.
+    </p>
   </div>
 </section>
 
+<section class="cta">
+  <h2>Begin vandaag met meer inzicht.</h2>
+  <p>Ontdek wat jouw vaste lasten je werkelijk kosten.</p>
+  <a class="button" href="#check">Start je gratis bespaarcheck</a>
+</section>
+</main>
+
 <footer>
-  <div class="logo">Besparen<span>360</span></div>
+  <div class="logo" style="color:white">Besparen<span>360</span></div>
   <p>Slim besparen begint hier.</p>
-  <p>© 2026 Besparen360</p>
+  <p>© 2026 Besparen360. Alle rechten voorbehouden.</p>
+  <p>Deze website is momenteel een testversie.</p>
 </footer>
 
 <script>
 function calculate() {
   const current = Number(document.getElementById("current").value);
   const alternative = Number(document.getElementById("alternative").value);
+  const category = document.getElementById("category").value;
   const result = document.getElementById("result");
+
+  result.style.display = "block";
 
   if (!Number.isFinite(current) || !Number.isFinite(alternative) ||
       current <= 0 || alternative < 0) {
-    result.style.display = "block";
-    result.textContent = "Vul een geldig bedrag in. De huidige kosten moeten hoger zijn dan €0.";
+    result.textContent =
+      "Vul geldige bedragen in. De huidige kosten moeten hoger zijn dan €0.";
     return;
   }
 
   const monthly = current - alternative;
   const yearly = monthly * 12;
-  result.style.display = "block";
 
   if (monthly > 0) {
-    result.innerHTML = "Mogelijke besparing per maand:<br><strong>€" +
-      monthly.toFixed(2) + "</strong><br>Mogelijke besparing per jaar: €" +
-      yearly.toFixed(2);
+    result.innerHTML =
+      "<strong>" + category + "</strong><br>" +
+      "Mogelijk verschil per maand:" +
+      '<span class="result-number">€' + monthly.toFixed(2) + "</span>" +
+      "Mogelijk verschil per jaar: €" + yearly.toFixed(2);
   } else if (monthly === 0) {
-    result.textContent = "Er is geen verschil tussen de twee bedragen.";
+    result.textContent =
+      "Er is geen prijsverschil tussen de twee bedragen.";
   } else {
-    result.textContent = "Het alternatief is €" +
-      Math.abs(monthly).toFixed(2) +
+    result.textContent =
+      "Het alternatief is €" + Math.abs(monthly).toFixed(2) +
       " per maand duurder.";
   }
 }
